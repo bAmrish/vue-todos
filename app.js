@@ -23,6 +23,15 @@ var vm = new Vue({
 	computed: {
 		remainingTodos: function(){
 			return this.todos.filter(function(todo){return !todo.done}).length;
+		},
+
+		allDone: function () {
+			
+			if(this.todos.length){
+				return this.todos.every(function(todo){return todo.done}) 
+			}
+
+			return false;
 		}
 	},
 
@@ -34,7 +43,12 @@ var vm = new Vue({
 				return;
 			}
 
+
 			var getNextId =  function() { 
+				if(todos.length == 0) {
+					return 1;
+				}
+
 				return (todos.slice(todos.length - 1)[0].id + 1);
 			}
 

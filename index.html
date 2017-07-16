@@ -62,7 +62,15 @@
 				<div class="col">
 					<div class="row">
 						<div class="col">
-							Remaining Todos: {{remainingTodos}}/{{todos.length}}
+							<div v-if="allDone" class="alert alert-info"> 
+								<div v-if="todos.length == 1">
+									{{todos.length}} Todo done!! You may want to add some more!
+								</div>
+								<div v-else>
+									All {{todos.length}} Todos done!! You may want to add some more!
+								</div>
+							</div>
+							<div v-else>Remaining Todos: {{remainingTodos}}/{{todos.length}}</div>							
 						</div>
 					</div>
 
@@ -81,13 +89,18 @@
 					</div>
 					<div class="row">
 						<div class="col">
-							<ul class="todos list-group">
-								<li><todo-item  
-									v-for="todo in todos" 
-									v-bind:todo="todo" 
-									v-bind:key="todo.id">										
-								</todo-item></li>
-							</ul>
+							<div v-if="todos.length == 0">
+							<div class="alert alert-info">No Todos!<br>Add some todos to get started!</div>
+							</div>
+							<div v-else>
+								<ul class="todos list-group">
+									<li><todo-item  
+										v-for="todo in todos" 
+										v-bind:todo="todo" 
+										v-bind:key="todo.id">										
+									</todo-item></li>
+								</ul>
+							</div>
 						</div>
 					</div>
 				</div>
