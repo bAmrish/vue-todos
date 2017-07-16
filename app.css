@@ -35,7 +35,7 @@ ul.todos {
     margin-left: 0px;
 }
 
-ul li.done label{
+ul li .done label{
     text-decoration: line-through;
 }
 
