@@ -1,0 +1,40 @@
+body {
+    padding-top: 2rem;
+    padding-bottom: 2rem;
+}
+
+h3 {
+    margin-top: 2rem;
+}
+
+.row {
+    margin-bottom: 1rem;
+    border-bottom: 1px solid rgba(86,61,124,.2);
+}
+
+.row .row {
+    margin-bottom: 0;
+    border-bottom: 0px 
+}
+
+[class*="col-"] {
+    padding-bottom: 1rem;
+}
+
+.row .row {
+    margin-top: 1rem;
+    margin-bottom: 0;
+}
+hr {
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+}
+
+ul.todos {
+    list-style-type: none;
+    margin-left: 0px;
+}
+
+ul li.done label{
+    text-decoration: line-through;
+}
