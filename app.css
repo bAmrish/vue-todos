@@ -38,3 +38,7 @@ ul.todos {
 ul li.done label{
     text-decoration: line-through;
 }
+
+.x-delete {
+    cursor: pointer;
+}

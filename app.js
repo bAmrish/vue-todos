@@ -1,9 +1,17 @@
 var todoItem = Vue.component('todo-item', {
 	props: ['todo'],
-	template: '<div :class="{done: todo.done}"><input type=checkbox v-model=todo.done :id=labelId> <label :for=labelId> {{todo.text}} </label></div>',
+
+	template: '<div :class="{done: todo.done}"><input type=checkbox v-model=todo.done :id=labelId> <label :for=labelId> {{todo.text}} </label> <span class="x-delete badge badge-danger" v-on:click="remove" >x</span></div>',
+	
 	computed: {
 		labelId: function () {
 			return "todo" + this.todo.id;
+		}
+	},
+
+	methods: {
+		remove: function(){
+			this.$emit('remove', this.todo)	
 		}
 	}
 });
@@ -54,6 +62,11 @@ var vm = new Vue({
 
 			this.todos.push({id: getNextId(), text: this.newTodo, done: false});
 			this.newTodo = ''
+		},
+
+		removeTodo: function(todo){
+			var index = this.todos.indexOf(todo);
+			this.todos.splice(index, 1);
 		}
 	},
 

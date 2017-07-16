@@ -56,7 +56,8 @@
 									<li><todo-item  
 										v-for="todo in todos" 
 										v-bind:todo="todo" 
-										v-bind:key="todo.id">										
+										v-bind:key="todo.id"
+										v-on:remove="removeTodo">										
 									</todo-item></li>
 								</ul>
 							</div>
