@@ -53,12 +53,16 @@
 							</div>
 							<div v-else>
 								<ul class="todos list-group">
-									<li><todo-item  
-										v-for="todo in todos" 
-										v-bind:todo="todo" 
-										v-bind:key="todo.id"
-										v-on:remove="removeTodo">										
-									</todo-item></li>
+									<li>
+										<transition-group appear name="slide-fade">
+											<todo-item  
+												v-for="todo in todos" 
+												v-bind:todo="todo" 
+												v-bind:key="todo.id"
+												v-on:remove="removeTodo">										
+											</todo-item>
+										</transition-group>
+									</li>
 								</ul>
 							</div>
 						</div>

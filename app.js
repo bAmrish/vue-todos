@@ -1,7 +1,13 @@
 var todoItem = Vue.component('todo-item', {
 	props: ['todo'],
 
-	template: '<div :class="{done: todo.done}"><input type=checkbox v-model=todo.done :id=labelId> <label :for=labelId> {{todo.text}} </label> <span class="x-delete badge badge-danger" v-on:click="remove" >x</span></div>',
+	template: '\
+		<div :class="{done: todo.done}">\
+			<span class="x-delete badge badge-danger" v-on:click="remove" >x</span>\
+			<input type=checkbox v-model=todo.done :id=labelId>\
+			<label :for=labelId> {{todo.text}} </label>\
+		</div>\
+	',
 	
 	computed: {
 		labelId: function () {
