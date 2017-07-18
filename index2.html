@@ -1,0 +1,75 @@
+<!DOCTYPE html lang="en">
+<html>
+<head>
+	<script src="https://unpkg.com/vue"></script>
+	<title>Second Vue App</title>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
+
+	<link rel="stylesheet" href="app.css">
+</head>
+<body>
+		<div id="app" class="container">
+			
+			<div class="row">
+				<div class="col"><h1>Todos</h1></div>
+			</div>
+
+			<div class="row">
+				<div class="col">
+					<div class="row">
+						<div class="col">
+							<div v-if="allDone" class="alert alert-info"> 
+								<div v-if="todos.length == 1">
+									{{todos.length}} Todo done!! You may want to add some more!
+								</div>
+								<div v-else>
+									All {{todos.length}} Todos done!! You may want to add some more!
+								</div>
+							</div>
+							<div v-else>Remaining Todos: {{remainingTodos}}/{{todos.length}}</div>							
+						</div>
+					</div>
+
+					<div class="row">
+						<div class="col">
+							<input type="text" id="todo-add" 
+								v-model="newTodo" 
+								v-on:keyup.enter="addTodo"
+								placeholder="New todo">
+							<button
+								class="btn btn-primary"
+								v-on:click="addTodo"
+								>New Todo</button>
+						</div>
+
+					</div>
+					<div class="row">
+						<div class="col">
+							<div v-if="todos.length == 0">
+							<div class="alert alert-info">No Todos!<br>Add some todos to get started!</div>
+							</div>
+							<div v-else>
+								<ul class="todos list-group">
+									<li>
+										<transition-group appear name="slide-fade">
+											<todo-item  
+												v-for="todo in todos" 
+												v-bind:todo="todo" 
+												v-bind:key="todo.id"
+												v-on:remove="removeTodo">										
+											</todo-item>
+										</transition-group>
+									</li>
+								</ul>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<script src="app.js"></script>
+</body>
+</html>
