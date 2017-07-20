@@ -62,7 +62,6 @@
 
 <script>
     import TodoItem from './TodoItem.vue'
-    import store from './store.js'
 
     export default {
         name: 'app',
@@ -75,35 +74,30 @@
 
         computed: {
             message: function () {
-               return store.state.message;
+               return this.$store.state.message;
             },
 
             todos: function(){
-              return store.state.todos;
+              return this.$store.state.todos;
             },
 
             remainingTodos: function(){
-                return this.todos.filter(function(todo){return !todo.done}).length;
+              return this.$store.getters.remainingTodos;
             },
 
             allDone: function () {
-          
-                if(this.todos.length){
-                    return this.todos.every(function(todo){return todo.done}) 
-                }
-
-                return false;
+              return this.$store.getters.allDone;
             }
         },
 
         methods: {
             addTodo: function(){
-                store.commit('addTodo', this.newTodo);
+                this.$store.commit('addTodo', this.newTodo);
                 this.newTodo = ''
             },
 
             removeTodo: function(todo){
-               store.commit('removetodo', todo);
+               this.$store.commit('removeTodo', todo);
             }
         },
 
