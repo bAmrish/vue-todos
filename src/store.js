@@ -6,7 +6,6 @@ Vue.use(Vuex);
 export default new Vuex.Store({
     
     state: {
-        message: 'This is a sample application',
         todos: [
             {id: 1, text: 'Learn Javascript', done: true},
             {id: 2, text: 'Learn Vue', done: false},

@@ -6,7 +6,6 @@
 
       <div class="row">
         <div class="col">
-          {{message}}
           <div class="row">
             <div class="col">
               <div v-if="allDone" class="alert alert-info"> 
@@ -107,13 +106,6 @@
 </script>
 
 <style>
-    #app {
-      font-family: 'Avenir', Helvetica, Arial, sans-serif;
-      -webkit-font-smoothing: antialiased;
-      -moz-osx-font-smoothing: grayscale;
-      color: #2c3e50;
-      margin-top: 60px;
-    }
     body {
         padding-top: 2rem;
         padding-bottom: 2rem;
