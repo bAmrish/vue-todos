@@ -6,7 +6,7 @@
 
       <div class="row">
         <div class="col">
-          
+          {{message}}
           <div class="row">
             <div class="col">
               <div v-if="allDone" class="alert alert-info"> 
@@ -62,23 +62,26 @@
 
 <script>
     import TodoItem from './TodoItem.vue'
+    import store from './store.js'
 
     export default {
         name: 'app',
 
         data () {
             return {
-                message: 'This is a sample application!',
-                todos: [
-                    {id: 1, text: 'Learn Javascript', done: true},
-                    {id: 2, text: 'Learn Vue', done: false},
-                    {id: 3, text: 'Build a todo app', done: false}
-                ],
                 newTodo: ''
             }
         },
 
         computed: {
+            message: function () {
+               return store.state.message;
+            },
+
+            todos: function(){
+              return store.state.todos;
+            },
+
             remainingTodos: function(){
                 return this.todos.filter(function(todo){return !todo.done}).length;
             },
@@ -95,28 +98,12 @@
 
         methods: {
             addTodo: function(){
-                var todos = this.todos;
-
-                if(this.newTodo.trim() == ''){
-                    return;
-                }
-
-
-                var getNextId =  function() { 
-                    if(todos.length == 0) {
-                        return 1;
-                    }
-
-                    return (todos.slice(todos.length - 1)[0].id + 1);
-                }
-
-                this.todos.push({id: getNextId(), text: this.newTodo, done: false});
+                store.commit('addTodo', this.newTodo);
                 this.newTodo = ''
             },
 
             removeTodo: function(todo){
-                var index = this.todos.indexOf(todo);
-                this.todos.splice(index, 1);
+               store.commit('removetodo', todo);
             }
         },
 
